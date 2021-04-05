@@ -1,0 +1,10 @@
+.contact-list {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  // & > .contact-preview:not(:first-child) {
+  & > .contact-preview {
+    margin-inline-start: 10px;
+    margin-bottom : 10px;
+  }
+}
