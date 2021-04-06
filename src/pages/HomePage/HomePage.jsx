@@ -2,7 +2,6 @@ import { Component } from 'react'
 import { userService } from '../../services/userService'
 import { bitcoinService } from '../../services/bitcoinService'
 import './HomePage.scss'
-import { StatisticPage } from '../StatisticPage'
 
 export class HomePage extends Component {
 
@@ -32,7 +31,6 @@ export class HomePage extends Component {
             <p>UserName:{this.state.loggedUser.name}</p>
             <p>Coins:{this.state.loggedUser.coins}</p>
             <p>Rate:{this.state.rate}</p>
-            <StatisticPage/>
           </div>
         }
       </div>

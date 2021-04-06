@@ -8,21 +8,24 @@ export function Chart({ data, color }) {
   return (
     <div className="chart">
       {
-        <Sparklines data={data} width={50} height={20}>
+        <Sparklines data={data} width={50} height={60}>
+        {/* <Sparklines data={data} width={50} height={"20"}> */}
             <SparklinesBars />
 
             <SparklinesLine color = {color} />
 
-            <SparklinesLine style={{ fill: "none" }} />
-            <SparklinesSpots />
+            {/* <SparklinesLine style={{ fill: "none" }} />
+            <SparklinesSpots /> */}
 
-            <SparklinesLine />
+            {/* <SparklinesLine /> */}
             <SparklinesReferenceLine type="mean" />
 
-            <SparklinesLine style={{ fill: "none" }}/>
-            <SparklinesNormalBand />
+            {/* <SparklinesLine style={{ fill: "none" }}/>
+            <SparklinesNormalBand /> */}
 
         </Sparklines>
+
+        
 
       }
     </div>

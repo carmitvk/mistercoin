@@ -1,0 +1,36 @@
+.contact-edit {
+  display: flex;
+  flex-direction: column;
+
+  .actions-edit {
+    width: 960px;
+    align-self: center;
+    display: flex;
+    justify-content: space-between;
+    // align-items: center;
+    // align-content: center;
+    margin-bottom: 40px;
+
+    .delete-btn {
+      cursor: pointer;
+      width: 40px;
+
+      .delete-icon {
+        width: 100%;
+      }
+    }
+  }
+  .fields-edit{
+    width: 960px;
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    margin-bottom: 100px;
+  }
+
+  .save-btn{
+    padding: 5px;
+    width:150px;
+    align-self: center;
+  }
+}

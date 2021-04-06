@@ -2,14 +2,15 @@ import { Component } from 'react'
 import { contactService } from '../../services/contactService'
 import './ContactPage.scss'
 import {ContactList} from '../../cmps/ContactList'
-import {ContactDetailsPage} from '../ContactDetailsPage'
+// import {ContactDetailsPage} from '../ContactDetailsPage'
 import { ContactFilter } from '../../cmps/ContactFilter/ContactFilter'
+import { Link } from 'react-router-dom'
+import plusImg from '../../assets/img/plus.png'
 
 export class ContactPage extends Component {
 
   state = {
     contacts: null,
-    selectedContactId: null,
     filterBy: null,
   }
 
@@ -22,15 +23,11 @@ export class ContactPage extends Component {
     this.setState({ contacts })
   }
 
-  onSelectContact = (contactId)=>{
-    this.setState({ selectedContactId: contactId })
-  }
-
-  onDeleteContact = async (contactId) => {
-    await contactService.deleteContact(contactId)
-    this.setState({ selectedContactId: null })
-    this.loadContacts()
-  }
+  // onDeleteContact = async (contactId) => {
+  //   await contactService.deleteContact(contactId)
+  //   this.setState({ selectedContactId: null })
+  //   this.loadContacts()
+  // }
 
   onChangeFilter = (filterBy) => {
     this.setState({ filterBy }, this.loadContacts)
@@ -39,22 +36,13 @@ export class ContactPage extends Component {
   render() {
     return (
       <div className="contact-page">
-        {
-          this.state.contacts && 
-          <div>
             <ContactFilter onChangeFilter={this.onChangeFilter} />
             <h3>contacts are:</h3>  
-            {
-              !this.state.selectedContactId &&
-              <ContactList contacts = {this.state.contacts} onSelectContact={this.onSelectContact} />
-            }
-            {
-              this.state.selectedContactId &&
-              // <ContactDetailsPage selectedContactId={this.state.selectedContactId} /> 
-              <ContactDetailsPage onDeleteContact={this.onDeleteContact} selectedContactId={this.state.selectedContactId} /> 
-            }
-          </div>
-        }
+
+              <ContactList contacts = {this.state.contacts} />
+              {/* <Link to="/contact/edit">Add Contact</Link> */}
+              <Link to='/contact/edit'><img className="add-contact" src={plusImg} alt=""/></Link>
+              {/* <Link to="/contact/edit">Add Contact</Link> */}
       </div>
     )
   }

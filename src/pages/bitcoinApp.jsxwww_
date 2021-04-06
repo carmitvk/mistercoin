@@ -1,0 +1,54 @@
+import { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { AppHeader } from '../cmps/AppHeader/AppHeader'
+import NiceButton from '../cmps/NiceButton'
+import { RobotFilter } from '../cmps/RobotFilter/RobotFilter'
+import { RobotList } from '../cmps/RobotList'
+import { eventBusService } from '../services/eventBusService'
+import { robotService } from '../services/robotService'
+
+export class bitcoinApp extends Component {
+
+  state = {
+    robots: null,
+    filterBy: null
+  }
+
+  componentDidMount() {
+    this.loadRobots()
+    eventBusService.on('navbar-render', (data) => {
+      console.log('Navbar!', data);
+    })
+  }
+
+  async loadRobots() {
+    const robots = await robotService.query(this.state.filterBy)
+    this.setState({ robots })
+  }
+
+  onChangeFilter = (filterBy) => {
+    this.setState({ filterBy }, this.loadRobots)
+  }
+
+  onDeleteRobot = async (robotId) => {
+    await robotService.remove(robotId)
+    this.loadRobots()
+  }
+  render() {
+    const { robots } = this.state
+
+    const Icon = () => <span className="icon">😎</span>
+
+    return (
+      <div className="robot-app">
+        <h1>Robot Shop</h1>
+        <RobotFilter match={this.props.match} onChangeFilter={this.onChangeFilter} />
+        <RobotList robots={robots} />
+        <Link to="/robot/edit">Add Robot</Link>
+        <NiceButton Icon={Icon}>
+          Very cool Button!
+        </NiceButton>
+      </div>
+    )
+  }
+}

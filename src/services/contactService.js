@@ -3,7 +3,8 @@ export const contactService = {
   getContactById,
   deleteContact,
   saveContact,
-  getEmptyContact
+  getEmptyContact,
+  // getNextContactByIdx
 }
 
 
@@ -206,7 +207,14 @@ function filter(term) {
   })
 }
 
-
+// function getNextContactByIdx(id){
+//   return new Promise((resolve, reject) => {
+//     const contactIdx = contacts.findIndex(contact => contact._id === id)
+//     // contactIdx  ? resolve(contact) : reject(`Contact id ${id} not found!`)
+//     if (!contactIdx) return -1;
+//     if ()  //carmit TODO
+//   })
+// }
 
 function _makeId(length = 10) {
   var txt = ''

@@ -6,7 +6,7 @@ import {ContactPreview} from '../../cmps/ContactPreview'
     return (
       <div className="contact-list">
         {
-          contacts && contacts.map(contact => <ContactPreview onSelectContact={onSelectContact} key={contact._id} contact={contact} />)
+          contacts && contacts.map(contact => <ContactPreview key={contact._id} contact={contact} />)
         }
       </div>
     )
